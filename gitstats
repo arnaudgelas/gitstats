@@ -1614,7 +1614,7 @@ class RSTReportCreator(ReportCreator):
     allauthors = data.getAuthors()
     if len(allauthors) > conf['max_authors']:
       rest = allauthors[conf['max_authors']:]
-      f.write('<p class="moreauthors">These didn\'t make it to the top: %s</p>' % ', '.join(rest))
+      f.write('These didn\'t make it to the top: %s\n\n' % ', '.join(rest))
 
     f.write( 'Cumulated Added Lines of Code per Author\n')
     f.write( '----------------------------------------\n\n')
@@ -1624,7 +1624,7 @@ class RSTReportCreator(ReportCreator):
     f.write('   :align: center\n\n')
 
     if len(allauthors) > conf['max_authors']:
-      f.write('<p class="moreauthors">Only top %d authors shown</p>' % conf['max_authors'])
+      f.write('Only top %d authors shown\n\n' % conf['max_authors'])
 
     f.write('Commits per Author\n')
     f.write('------------------\n\n')
@@ -1634,7 +1634,7 @@ class RSTReportCreator(ReportCreator):
     f.write('   :align: center\n\n')
 
     if len(allauthors) > conf['max_authors']:
-      f.write('<p class="moreauthors">Only top %d authors shown</p>' % conf['max_authors'])
+      f.write('Only top %d authors shown\n\n' % conf['max_authors'])
 
     fgl = open(path + '/lines_of_code_by_author.dat', 'w')
     fgc = open(path + '/commits_by_author.dat', 'w')
@@ -1819,7 +1819,7 @@ class RSTReportCreator(ReportCreator):
       f.write('\n\n')
 
       f.write('.. csv-table:: Tags\n')
-      f.write('   :header: \"Name\", \"Date\", \"Commits\", \"Authors\"\n')
+      f.write('   :header: \"Name\", \"Date\", \"Commits\", \"Authors\"\n\n')
 
       # sort the tags by date desc
       tags_sorted_by_date_desc = map(lambda el : el[1], reversed(sorted(map(lambda el : (el[1]['date'], el[0]), data.tags.items()))))
